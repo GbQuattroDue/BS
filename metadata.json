@@ -1,0 +1,5 @@
+{
+  "name": "Gestore - Order Management",
+  "description": "A streamlined single-page application for agile and centralized order management. Users can manage clients, products, and create new orders through a simple, multi-step wizard.",
+  "requestFramePermissions": []
+}
