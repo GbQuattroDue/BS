@@ -3,12 +3,10 @@
 // Se ha actualizado para usar credenciales de prueba locales y no depender de un backend.
 
 import React, { useState } from 'react'; // Importa React y el hook useState.
-import { BoxIcon } from './icons/BoxIcon'; // Importa el ícono para el logo.
+import { GestoreLightIcon } from './icons/GestoreLightIcon'; // Importa el ícono para el logo.
 import { AitanaImgIcon } from './icons/AitanaImgIcon'; // Importa el componente Img para manejar imágenes.
 import { Spinner } from './Spinner'; // Importa el componente de carga.
 import { Alert } from './Alert'; // Importa el componente de alerta para errores.
-import '../src/assets/css/variables.css'; // Importa las variables CSS globales
-import '../src/assets/css/bootstrap_ges.min.css'; // Importa los estilos de Bootstrap personalizados
 import { MainNavBarLoginIcon } from './icons/MainNavBarLoginIcon';
 
 
@@ -62,22 +60,19 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
     // Renderizado del componente con clases de Bootstrap.
     return (
-        <div className="d-flex vh-100 bg-body-tertiary align-items-center justify-content-center">
+        <div className="page-content content-wrapper content-inner">
             {/* Navbar superior con iconos de login */}
-            <div className="position-fixed top-0 end-0 p-3" style={{ zIndex: 1000 }}>
+            <div className="d-inline-block" >
                 <MainNavBarLoginIcon
-                    onLoginClick={handleNavLogin}
-                    onRegisterClick={handleNavRegister}
-                    onSupportClick={handleNavSupport}
                 />
             </div>
 
-            <main className="form-signin w-100 m-auto" style={{ maxWidth: '400px' }}>
-                <div className="card mb-0">
-                    <div className="card-body">
+            <main className="content d-flex justify-content-center align-items-center">
+                <div className="login-form">
+                    <div className=" card mb-0 card-body">
                         <form onSubmit={handleLogin}>
                             <div className="text-center mb-3">
-                                <div className="border-secondary border-3 rounded-pill mb-3 mt-1">
+                                <div className="rounded-pill">
                                     <AitanaImgIcon />
                                 </div>
                                 <h5 className="mb-0">Bienvenido a Gestore</h5>
@@ -88,21 +83,23 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                             {error && <div className="mt-3"><Alert type="danger" message={error} /></div>}
 
                             {/* Campo de usuario con `form-floating` de Bootstrap */}
-                            <div className="form-floating my-3">
+                            <div className="form-group form-group-feedback form-group-feedback-left">
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="username"
-                                    placeholder="Usuario (testuser)"
+                                    placeholder="Tu email"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     required
                                 />
-                                <label htmlFor="username">Usuario (testuser)</label>
+                                <div className="form-control-feedback">
+                                    <i className="icon-envelop3 text-muted"></i>
+                                </div>
                             </div>
 
                             {/* Campo de contraseña con `form-floating` */}
-                            <div className="form-floating mb-3">
+                            <div className="form-group form-group-feedback form-group-feedback-left">
                                 <input
                                     type="password"
                                     className="form-control"
@@ -112,14 +109,16 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
-                                <label htmlFor="password">Contraseña (password)</label>
+                                <div className="form-control-feedback">
+                                    <i className="icon-lock2 text-muted"></i>
+                                </div>
                             </div>
 
-                            <button className="w-100 btn btn-lg btn-primary" type="submit" disabled={isLoading}>
-                                {isLoading ? <Spinner size="sm" /> : 'Iniciar Sesión'}
+                            <button className="form-group btn btn-primary btn-block"
+                                type="submit" disabled={isLoading}>
+                                {isLoading ? <Spinner size="sm" /> : 'Ingresar'}
                             </button>
 
-                            {/* Botón de acceso rápido para pruebas */}
                             <div className="text-center mt-3">
                             </div>
 

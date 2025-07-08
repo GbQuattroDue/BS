@@ -1,0 +1,34 @@
+/* Archivo CSS principal para importar todos los estilos */
+
+/* Importar variables CSS globales */
+@import './src/assets/css/variables.css';
+
+/* Importar componentes CSS */
+@import './src/assets/css/componentes.css';
+
+/* Importar layout CSS */
+@import './src/assets/css/layout_ges.css';
+
+/* Importar dashboard CSS */
+@import './src/assets/css/dashboard.css';
+
+/* Importar estilos personalizados */
+@import './src/assets/css/styles_ges.min.css';
+
+/* Fuentes de Google */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900');
+
+/* Estilos adicionales para la aplicación */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}

@@ -40,6 +40,7 @@ export const UserPlusIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => 
             strokeLinecap="round"
             strokeLinejoin="round"
         />
+
     </svg>
 );
 

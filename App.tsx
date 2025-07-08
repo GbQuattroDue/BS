@@ -14,6 +14,7 @@ import { Sidebar } from './components/Sidebar'; // Importa el nuevo menú latera
 import { Footer } from './components/Footer'; // Importa el nuevo pie de página.
 import { BellIcon } from './components/icons/BellIcon'; // Importa el ícono de notificaciones.
 import { SearchIcon } from './components/icons/SearchIcon'; // Importa el ícono de búsqueda.
+import './src/assets/css/styles_ges.min.css'; // Importa los estilos globales de la aplicación.
 
 function App() {
   // Estado para la autenticación del usuario.
@@ -30,7 +31,7 @@ function App() {
   if (!isAuthenticated) {
     return <Login onLoginSuccess={() => setIsAuthenticated(true)} />;
   }
-  
+
   // Si el usuario SÍ está autenticado, muestra el layout principal de la aplicación.
   return (
     <div className="d-flex" style={{ minHeight: '100vh' }}>
@@ -101,16 +102,16 @@ function App() {
 
         {/* 2.2 Contenido Principal de la Página */}
         <main className="flex-grow-1 p-4">
-            <CreateOrderWizard />
+          <CreateOrderWizard />
         </main>
-        
+
         {/* 2.3 Pie de Página */}
         <Footer />
       </div>
 
       {/* Modal para mostrar el código del backend */}
       <Modal isOpen={isBackendModalOpen} onClose={() => setIsBackendModalOpen(false)}>
-          <BackendCodeViewer />
+        <BackendCodeViewer />
       </Modal>
 
     </div>
