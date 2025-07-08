@@ -119,7 +119,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                                 {isLoading ? <Spinner size="sm" /> : 'Ingresar'}
                             </button>
 
-                            <button className="form-group btn btn-secondary btn-block"
+                            <button className="form-group btn btn-secondary-100 btn-block"
                                 type="submit" disabled={isLoading}>
                                 {isLoading ? <Spinner size="sm" /> : 'Olvidaste tu contraseña?'}
                             </button>
