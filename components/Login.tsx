@@ -119,6 +119,11 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                                 {isLoading ? <Spinner size="sm" /> : 'Ingresar'}
                             </button>
 
+                            <button className="form-group btn btn-secondary btn-block"
+                                type="submit" disabled={isLoading}>
+                                {isLoading ? <Spinner size="sm" /> : 'Olvidaste tu contraseña?'}
+                            </button>
+
                             <div className="text-center mt-3">
                             </div>
 
