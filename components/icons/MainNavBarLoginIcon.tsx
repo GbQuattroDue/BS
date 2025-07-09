@@ -4,6 +4,7 @@ import { SupportIcon } from './SupportIcon';
 import { UserPlusIcon } from './UserPlusIcon';
 import { LoginIcon } from './LoginIcon';
 import { GestoreLightIcon } from './GestoreLightIcon';
+import { IconName, getIconClass, ICON_CATEGORIES } from '@assets/icons';
 
 interface MainNavBarLoginIconProps {
     className?: string;
@@ -19,13 +20,22 @@ export const MainNavBarLoginIcon: React.FC<MainNavBarLoginIconProps> = ({
     onSupportClick
 }) => (
     <div className={"navbar navbar-expand-lg navbar-dark navbar-static"}>
-        <ul className="navbar-brand ml-2 ml-lg-0">
-            <li className="d-inline-block">
+        <div className="navbar-brand ml-2 ml-lg-0">
+            <a className="d-inline-block">
                 <GestoreLightIcon
-                    className="navbar-brand-img"
                     alt="Inicio"
                 />
-            </li>
-        </ul>
+            </a>
+        </div>
+        {/* <div className="d-flex justify-content-end align-items-center ml-auto">
+            <ul className="navbar-nav flex-row">
+                <li className="nav-item">
+                    <a href="#" className="navbar-nav-link">
+                        <i className={getIconClass('user-plus')} style={{ marginRight: '8px' }} />
+                        Registrarse
+                    </a>
+                </li>
+            </ul>
+        </div> */}
     </div>
 );

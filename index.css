@@ -1,19 +1,22 @@
 /* Archivo CSS principal para importar todos los estilos */
 
-/* Importar variables CSS globales */
-@import './src/assets/css/variables.css';
-
 /* Importar componentes CSS */
 @import './src/assets/css/componentes.css';
-
-/* Importar layout CSS */
-@import './src/assets/css/layout_ges.css';
 
 /* Importar dashboard CSS */
 @import './src/assets/css/dashboard.css';
 
+/* Importar icons CSS */
+@import './src/assets/css/icons-custom.css';
+
+/* Importar layout CSS */
+@import './src/assets/css/layout.css';
+
 /* Importar estilos personalizados */
-@import './src/assets/css/styles_ges.min.css';
+@import './src/assets/css/styles.css';
+
+/* Importar variables CSS globales */
+@import './src/assets/css/variables.css';
 
 /* Fuentes de Google */
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900');

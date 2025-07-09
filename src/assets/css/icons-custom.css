@@ -1,0 +1,147 @@
+/* Archivo: `src/assets/css/icons-custom.css` */
+/* Archivo CSS personalizado para iconos */
+/* Estilos personalizados para iconos */
+
+/* Tamaños adicionales */
+.icon-xs {
+    font-size: 0.75em;
+}
+
+.icon-sm {
+    font-size: 0.875em;
+}
+
+.icon-lg {
+    font-size: 1.25em;
+}
+
+.icon-xl {
+    font-size: 1.5em;
+}
+
+/* Animaciones */
+.icon-spin {
+    animation: icon-spin 1s infinite linear;
+}
+
+.icon-pulse {
+    animation: icon-pulse 1s infinite ease-in-out;
+}
+
+@keyframes icon-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes icon-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Estados de hover */
+.icon-hover:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* Colores personalizados */
+.icon-primary {
+    color: var(--bs-primary);
+}
+
+.icon-secondary {
+    color: var(--bs-secondary);
+}
+
+.icon-success {
+    color: var(--bs-success);
+}
+
+.icon-warning {
+    color: var(--bs-warning);
+}
+
+.icon-danger {
+    color: var(--bs-danger);
+}
+
+.icon-info {
+    color: var(--bs-info);
+}
+
+/* Iconos en botones */
+.btn .icon:first-child {
+    margin-right: 0.375rem;
+}
+
+.btn .icon:last-child {
+    margin-left: 0.375rem;
+}
+
+.btn .icon:only-child {
+    margin: 0;
+}
+
+/* Iconos en navegación */
+.nav-link .icon {
+    margin-right: 0.5rem;
+    opacity: 0.8;
+}
+
+.nav-link:hover .icon,
+.nav-link.active .icon {
+    opacity: 1;
+}
+
+/* Indicadores de paso */
+.step-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bs-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 2px solid var(--bs-border-color);
+}
+
+.step-item.active .step-circle {
+    background: var(--bs-primary);
+    color: white;
+    border-color: var(--bs-primary);
+}
+
+/* Iconos de estado en tablas */
+.table .status-icon {
+    width: 1.5rem;
+    text-align: center;
+}
+
+.status-pending {
+    color: var(--bs-warning);
+}
+
+.status-completed {
+    color: var(--bs-success);
+}
+
+.status-cancelled {
+    color: var(--bs-danger);
+}
+
+.status-processing {
+    color: var(--bs-info);
+}

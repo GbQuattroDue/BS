@@ -14,7 +14,7 @@ import { Sidebar } from './components/Sidebar'; // Importa el nuevo menú latera
 import { Footer } from './components/Footer'; // Importa el nuevo pie de página.
 import { BellIcon } from './components/icons/BellIcon'; // Importa el ícono de notificaciones.
 import { SearchIcon } from './components/icons/SearchIcon'; // Importa el ícono de búsqueda.
-import './src/assets/css/styles_ges.min.css'; // Importa los estilos globales de la aplicación.
+import './src/assets/css/styles.css'; // Importa los estilos globales de la aplicación.
 
 function App() {
   // Estado para la autenticación del usuario.

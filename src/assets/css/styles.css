@@ -1,11 +1,11 @@
-// 
+/* IcoMoon Icon Font CSS */
 @font-face {
     font-family: icomoon;
-    src: url(fonts/icomoon.eot?3p0rtw);
-    src: url(fonts/icomoon.eot?#iefix3p0rtw) format("embedded-opentype"),
-        url(fonts/icomoon.woff?3p0rtw) format("woff"),
-        url(fonts/icomoon.ttf?3p0rtw) format("truetype"),
-        url(fonts/icomoon.svg?3p0rtw#icomoon) format("svg");
+    src: url(./icomoon/fonts/icomoon.eot?3p0rtw);
+    src: url(./icomoon/fonts/icomoon.eot?#iefix3p0rtw) format("embedded-opentype"),
+        url(./icomoon/fonts/icomoon.woff?3p0rtw) format("woff"),
+        url(./icomoon/fonts/icomoon.ttf?3p0rtw) format("truetype"),
+        url(./icomoon/fonts/icomoon.svg?3p0rtw#icomoon) format("svg");
     font-weight: 400;
     font-style: normal;
 }
@@ -13,7 +13,6 @@
 [class*=" icon-"],
 [class^="icon-"] {
     font-family: icomoon !important;
-    speak: none;
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
@@ -28,6 +27,21 @@
     top: -1px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tamaños adicionales de iconos */
+.icon-2x {
+    font-size: 2rem;
+}
+
+.icon-3x {
+    font-size: 3rem;
+}
+
+.icon-bordered {
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 50%;
 }
 
 .icon-1x {
