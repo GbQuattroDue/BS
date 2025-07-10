@@ -1,6 +1,4 @@
-// components/Login.tsx
-// Este componente gestiona la pantalla y la lógica de inicio de sesión.
-// Se ha actualizado para usar credenciales de prueba locales y no depender de un backend.
+// components/LoginRegistration.tsx
 
 import React, { useState } from 'react'; // Importa React y el hook useState.
 import { AitanaImgIcon } from './icons/AitanaImgIcon'; // Importa el componente Img para manejar imágenes.
@@ -14,17 +12,20 @@ import { IconName, getIconClass, ICON_CATEGORIES } from '@assets/icons';
 // Define las propiedades que el componente Login espera recibir.
 interface LoginProps {
     onLoginSuccess: () => void; // Una función que se llamará cuando el login sea exitoso.
+    onBackToLogin?: () => void; // Una función opcional para volver al login desde el registro.
 }
 
-export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
-    // Estado para guardar el nombre de usuario introducido.
-    const [username, setUsername] = useState('');
-    // Estado para guardar la contraseña introducida.
-    const [password, setPassword] = useState('');
-    // Estado para guardar mensajes de error.
-    const [error, setError] = useState('');
-    // Estado para controlar la visibilidad del spinner en el botón.
-    const [isLoading, setIsLoading] = useState(false);
+export const Login: React.FC<LoginProps> = ({ onLoginSuccess, onBackToLogin }) => {
+
+    const [name, setName] = useState(''); // Estado para guardar el nombre de usuario introducido.
+    const [apellido, setApellido] = useState(''); // Estado para guardar el apellido introducido.
+    const [email, setEmail] = useState(''); // Estado para guardar el email introducido.
+    const [password, setPassword] = useState(''); // Estado para guardar la contraseña introducida.
+    const [telefono, setTelefono] = useState(''); // Estado para guardar el telefono introducido.
+    const [telefonoOtro, setTelefonoOtro] = useState(''); // Estado para guardar el telefono otro introducido.
+    const [username, setUsername] = useState(''); // Estado para guardar el nombre de cuenta introducido.
+    const [error, setError] = useState(''); // Estado para guardar mensajes de error.
+    const [isLoading, setIsLoading] = useState(false); // Estado para controlar la visibilidad del spinner en el botón.
 
     // Función que se ejecuta al enviar el formulario.
     const handleLogin = (e: React.FormEvent) => {
@@ -46,9 +47,14 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
     // Funciones para manejar los eventos del MainNavBarLoginIcon
     const handleNavLogin = () => {
-        // Auto-completar con credenciales de prueba
-        setUsername('testuser');
-        setPassword('password');
+        // Si hay una función para volver al login, usarla
+        if (onBackToLogin) {
+            onBackToLogin();
+        } else {
+            // Auto-completar con credenciales de prueba (comportamiento por defecto)
+            setUsername('testuser');
+            setPassword('password');
+        }
     };
 
     const handleNavRegister = () => {
@@ -68,74 +74,157 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                 />
             </div>
 
-            <main className="content d-flex justify-content-center align-items-center">
-                <div className="login-form">
-                    <div className=" card mb-0 card-body">
-                        <form onSubmit={handleLogin}>
-                            <div className="text-center mb-3">
-                                <div className="rounded-pill">
-                                    <AitanaImgIcon />
+            {/* Registration form */}
+            <main className="page-content content-wrapper content-inner">
+                <div className="content d-flex justify-content-center align-items-center">
+                    <form className="flex-fill">
+                        <div className="row">
+                            <div className="col-lg-6 offset-lg-3">
+                                <div className="card mb-0">
+                                    <div className="card-body">
+                                        <form onSubmit={handleLogin}>
+                                            <div className="text-center mb-3">
+                                                <div className="rounded-pill">
+                                                    <AitanaImgIcon />
+                                                </div>
+                                                <h5 className="mb-0">Registro de nueva cuenta</h5>
+                                                <span className="d-block text-muted">¡ Bienvenido ! Complete los campos requeridos</span>
+                                            </div>
+
+                                            {/* Campos del usuario */}
+                                            <div className="row">
+                                                <div className="col-lg-6">
+                                                    <div className="form-group form-group-feedback form-group-feedback-right">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="name"
+                                                            placeholder="Nombre"
+                                                            value={name}
+                                                            onChange={(e) => setName(e.target.value)}
+                                                            required
+                                                        />
+                                                        <div className="form-control-feedback text-muted">
+                                                            <i className={getIconClass('user-check')} style={{ marginRight: '8px' }} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <div className="form-group form-group-feedback form-group-feedback-right">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="apellido"
+                                                            placeholder="Apellido"
+                                                            value={apellido}
+                                                            onChange={(e) => setApellido(e.target.value)}
+                                                            required
+                                                        />
+                                                        <div className="form-control-feedback text-muted">
+                                                            <i className={getIconClass('user-check')} style={{ marginRight: '8px' }} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="row">
+                                                <div className="col-lg-6">
+                                                    <div className="form-group form-group-feedback form-group-feedback-right">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="email"
+                                                            placeholder="Email"
+                                                            value={email}
+                                                            onChange={(e) => setEmail(e.target.value)}
+                                                            required
+                                                        />
+                                                        <div className="form-control-feedback text-muted">
+                                                            <i className={getIconClass('envelop3')} style={{ marginRight: '8px' }} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <div className="form-group form-group-feedback form-group-feedback-right">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="password"
+                                                            placeholder="Password"
+                                                            value={password}
+                                                            onChange={(e) => setPassword(e.target.value)}
+                                                            required
+                                                        />
+                                                        <div className="form-control-feedback text-muted">
+                                                            <i className={getIconClass('user-lock')} style={{ marginRight: '8px' }} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="row">
+                                                <div className="col-lg-6">
+                                                    <div className="form-group form-group-feedback form-group-feedback-right">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="telefono"
+                                                            placeholder="Teléfono con whatsapp"
+                                                            value={telefono}
+                                                            onChange={(e) => setTelefono(e.target.value)}
+                                                            required
+                                                        />
+                                                        <div className="form-control-feedback text-muted">
+                                                            <i className={getIconClass('mobile')} style={{ marginRight: '8px' }} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <div className="form-group form-group-feedback form-group-feedback-right">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="telefonootro"
+                                                            placeholder="Otro teléfono alternativo"
+                                                            value={telefonoOtro}
+                                                            onChange={(e) => setTelefonoOtro(e.target.value)}
+                                                            required
+                                                        />
+                                                        <div className="form-control-feedback text-muted">
+                                                            <i className={getIconClass('phone')} style={{ marginRight: '8px' }} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="card bg-transparent text-right">
+                                                <button className="btn btn-teal btn-labeled btn-labeled-right"
+                                                    type="submit" disabled={isLoading}>
+                                                    {isLoading ? <Spinner /> : 'Crear Cuenta  '}
+
+                                                    <i className={getIconClass('plus3')} />
+                                                </button>
+                                            </div>
+
+                                            {onBackToLogin && (
+                                                <div className="card-footer bg-transparent text-center">
+                                                    <button
+                                                        type="button"
+                                                        className="btn btn-secondary btn-light btn-labeled-center btn-sm font-weight-semibold"
+                                                        onClick={onBackToLogin}
+                                                    >
+                                                        Volver al Login
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </form>
+                                    </div>
                                 </div>
-                                <h5 className="mb-0">Bienvenido a Gestore</h5>
-                                <span className="d-block text-muted">Inicia sesión para gestionar tus pedidos</span>
                             </div>
-
-                            {/* Muestra un error si el login falla */}
-                            {error && <div className="mt-3"><Alert type="danger" message={error} /></div>}
-
-                            {/* Campo de usuario con `form-floating` de Bootstrap */}
-                            <div className="form-group form-group-feedback form-group-feedback-left">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="username"
-                                    placeholder="Tu email"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    required
-                                />
-                                <div className="form-control-feedback text-muted">
-                                    <i className={getIconClass('envelop3')} style={{ marginRight: '8px' }} />
-                                </div>
-                            </div>
-
-                            {/* Campo de contraseña con `form-floating` */}
-                            <div className="form-group form-group-feedback form-group-feedback-left">
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="password"
-                                    placeholder="Contraseña (password)"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                />
-                                <div className="form-control-feedback text-muted">
-                                    <i className={getIconClass('lock2')} style={{ marginRight: '8px' }} />
-                                </div>
-                            </div>
-
-                            <button className="form-group btn btn-primary btn-block"
-                                type="submit" disabled={isLoading}>
-                                {isLoading ? <Spinner size="sm" /> : 'Ingresar'}
-                            </button>
-
-                            <div className="text-center mt-3">
-                                <a href="#">
-                                    ¿ Olvidaste tu contraseña ?
-                                </a>
-                            </div>
-
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </main>
-
-            <div>
-                <FooterAnonymous
-                />
-            </div>
-
         </div>
     );
 };

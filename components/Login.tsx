@@ -8,6 +8,7 @@ import { Spinner } from './Spinner'; // Importa el componente de carga.
 import { Alert } from './Alert'; // Importa el componente de alerta para errores.
 import { MainNavBarLoginIcon } from './icons/MainNavBarLoginIcon';
 import { FooterAnonymous } from './FooterAnonymous'; // Importa el nuevo pie de página.
+import { Login as LoginRegistration } from './LoginRegistration'; // Importa el componente de registro
 import { IconName, getIconClass, ICON_CATEGORIES } from '@assets/icons';
 
 
@@ -17,6 +18,8 @@ interface LoginProps {
 }
 
 export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
+    // Estado para controlar si se muestra el formulario de login o el de registro
+    const [showRegistration, setShowRegistration] = useState(false);
     // Estado para guardar el nombre de usuario introducido.
     const [username, setUsername] = useState('');
     // Estado para guardar la contraseña introducida.
@@ -52,12 +55,22 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     };
 
     const handleNavRegister = () => {
-        alert('Funcionalidad de registro no implementada. Use: testuser / password');
+        setShowRegistration(true);
     };
 
     const handleNavSupport = () => {
         alert('Soporte: Para acceder use testuser / password');
     };
+
+    // Función para volver al login desde el registro
+    const handleBackToLogin = () => {
+        setShowRegistration(false);
+    };
+
+    // Si se debe mostrar el registro, renderizar el componente LoginRegistration
+    if (showRegistration) {
+        return <LoginRegistration onLoginSuccess={onLoginSuccess} onBackToLogin={handleBackToLogin} />;
+    }
 
     // Renderizado del componente con clases de Bootstrap.
     return (
@@ -83,7 +96,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                             {/* Muestra un error si el login falla */}
                             {error && <div className="mt-3"><Alert type="danger" message={error} /></div>}
 
-                            {/* Campo de usuario con `form-floating` de Bootstrap */}
+                            {/* Campo de usuario */}
                             <div className="form-group form-group-feedback form-group-feedback-left">
                                 <input
                                     type="text"
@@ -99,7 +112,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                                 </div>
                             </div>
 
-                            {/* Campo de contraseña con `form-floating` */}
+                            {/* Campo de contraseña */}
                             <div className="form-group form-group-feedback form-group-feedback-left">
                                 <input
                                     type="password"
@@ -120,27 +133,29 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                                 {isLoading ? <Spinner size="sm" /> : 'Ingresar'}
                             </button>
 
-                            <div className="text-center mt-3">
+                            <div className="text-center mt-2">
                                 <a href="#">
                                     ¿ Olvidaste tu contraseña ?
                                 </a>
                             </div>
 
+                            <div className="text-center mt-2">
+                                <button
+                                    type="button"
+                                    className="btn btn-success btn-sm"
+                                    onClick={() => setShowRegistration(true)}
+                                >
+                                    <i className={getIconClass('user-plus')} style={{ marginRight: '8px' }} />
+                                    ¿No tienes cuenta? Regístrate ahora
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </main>
 
-            <div>
-                <FooterAnonymous
-                />
-            </div>
 
         </div>
     );
 };
-
-function setUsername(value: string): void {
-    throw new Error('Function not implemented.');
-}
 

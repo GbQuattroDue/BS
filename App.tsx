@@ -1,6 +1,4 @@
-
-// App.tsx
-// Este es el componente principal de la aplicación.
+// App.tsx es el componente principal de la aplicación.
 // Gestiona el estado de autenticación y renderiza la pantalla de login o la aplicación principal con el nuevo layout.
 
 import React, { useState } from 'react'; // Importa React y el hook useState para manejar el estado.
