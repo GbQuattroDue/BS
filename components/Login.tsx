@@ -18,16 +18,12 @@ interface LoginProps {
 }
 
 export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
-    // Estado para controlar si se muestra el formulario de login o el de registro
-    const [showRegistration, setShowRegistration] = useState(false);
-    // Estado para guardar el nombre de usuario introducido.
-    const [username, setUsername] = useState('');
-    // Estado para guardar la contraseña introducida.
-    const [password, setPassword] = useState('');
-    // Estado para guardar mensajes de error.
-    const [error, setError] = useState('');
-    // Estado para controlar la visibilidad del spinner en el botón.
-    const [isLoading, setIsLoading] = useState(false);
+
+    const [showRegistration, setShowRegistration] = useState(false); // Estado para controlar si se muestra el formulario de login o el de registro
+    const [username, setUsername] = useState(''); // Estado para guardar el nombre de usuario introducido.
+    const [password, setPassword] = useState(''); // Estado para guardar la contraseña introducida.    
+    const [error, setError] = useState(''); // Estado para guardar mensajes de error.   
+    const [isLoading, setIsLoading] = useState(false); // Estado para controlar la visibilidad del spinner en el botón.
 
     // Función que se ejecuta al enviar el formulario.
     const handleLogin = (e: React.FormEvent) => {

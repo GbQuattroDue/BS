@@ -12,6 +12,7 @@ import { ClientSelector } from './ClientSelector'; // Importa el componente para
 import { ProductSelector } from './ProductSelector'; // Importa el componente para seleccionar productos.
 import { OrderReview } from './OrderReview'; // Importa el componente para revisar el pedido.
 import { CheckCircleIcon } from './icons/CheckCircleIcon'; // Importa el ícono de éxito.
+import { SweetAlertButton, LaddaButton, useSweetAlert } from './PluginComponents'; // Importa componentes que usan plugins.
 
 // Define los posibles pasos del wizard.
 type WizardStep = 1 | 2 | 3 | 4; // 1: Cliente, 2: Productos, 3: Revisión, 4: Éxito
@@ -25,12 +26,12 @@ export const CreateOrderWizard = () => {
     const [products, setProducts] = useState<Product[]>([]);
     // Estado para controlar la visibilidad del spinner de carga inicial.
     const [isLoading, setIsLoading] = useState(true);
-    
+
     // Estado para el cliente seleccionado.
     const [selectedClient, setSelectedClient] = useState<Client | null>(null);
     // Estado para el carrito de compras.
     const [cart, setCart] = useState<CartItem[]>([]);
-    
+
     // Estado para mensajes de error.
     const [error, setError] = useState('');
     // Estado para controlar si un pedido se está enviando.
@@ -114,12 +115,12 @@ export const CreateOrderWizard = () => {
     // Muestra un spinner mientras se cargan los datos iniciales.
     if (isLoading) {
         return (
-            <div className="d-flex justify-content-center align-items-center" style={{height: '50vh'}}>
+            <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
                 <Spinner />
             </div>
         );
     }
-    
+
     // Muestra un error si algo falla.
     if (error && step !== 4) {
         return <Alert type="danger" message={error} />;
@@ -137,15 +138,20 @@ export const CreateOrderWizard = () => {
             case 4:
                 return (
                     <div className="text-center py-5">
-                        <CheckCircleIcon className="mx-auto h-16 w-16 text-success" style={{height: '4rem', width: '4rem'}} />
+                        <CheckCircleIcon className="mx-auto h-16 w-16 text-success" style={{ height: '4rem', width: '4rem' }} />
                         <h3 className="mt-4 h2">¡Pedido Creado Exitosamente!</h3>
                         <p className="mt-2 text-muted">El pedido para {selectedClient?.name} ha sido registrado.</p>
-                        <button
-                            onClick={handleReset}
+                        <SweetAlertButton
                             className="btn btn-primary btn-lg mt-4"
+                            onClick={handleReset}
+                            showConfirmation={true}
+                            confirmTitle="¿Crear otro pedido?"
+                            confirmText="¿Estás seguro de que quieres crear un nuevo pedido? Se perderán los datos actuales."
+                            successTitle="¡Perfecto!"
+                            successText="Ya puedes crear un nuevo pedido"
                         >
                             Crear Otro Pedido
-                        </button>
+                        </SweetAlertButton>
                     </div>
                 );
             default:
@@ -158,10 +164,10 @@ export const CreateOrderWizard = () => {
             <div className="card-body p-4 p-md-5">
                 <h2 className="card-title h3 mb-2">Crear Nuevo Pedido</h2>
                 <p className="card-subtitle mb-4 text-muted">Sigue los pasos para registrar un nuevo pedido.</p>
-                
+
                 {step <= 3 && <StepTracker currentStep={step} />}
-                
-                <div className="mt-4" style={{minHeight: '300px'}}>
+
+                <div className="mt-4" style={{ minHeight: '300px' }}>
                     {renderStepContent()}
                 </div>
             </div>
