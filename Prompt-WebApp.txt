@@ -1,0 +1,572 @@
+PROMPT ORIGINAL
+
+Solicito un ejemplo completo de una "aplicación web" 
+para ser desplegada con "GitHub" en los servicios en la nube de la empresa "DIGITAL OCEAN"
+en TypeScript con Node.js, express, MySQL y Sequelize 
+que implementa un CRUD de usuarios con validaciones completas, 
+implementando autenticación JWT y encriptación de contraseñas con bcrypt,
+
+Aplica "mejores prácticas" y busca mejoras para lograr "mayor eficiencia" de recursos
+Previo a la devolución realiza un "testing" completo: Integra pruebas unitarias y de integración (por ejemplo, con Jest)
+para asegurar la calidad del código.
+
+Asegura la "escalabilidad": revisa patrones de diseño como repositorios y controladores de servicios para separar mejor 
+la lógica de negocio.
+
+Por favor INCLUYE instrucciones precisas y explicaciones detalladas para que yo pueda comprender y aprender 
+cada parte del código.
+
+Mi código para que revises y corrijas es el siguiente, 
+detallado en puntos para su mejor comprensión
+
+
+----------------------------------------------------------------
+Proyecto completo: 
+CRUD de Usuarios en Node.js/TypeScript con JWT, bcrypt, Sequelize, pruebas y despliegue en DigitalOcean
+
+A continuación tienes un ejemplo end-to-end que incluye:
+- Estructura recomendada
+- Instalación y configuración de TypeScript, dependencias y herramientas
+- Docker, GitHub Actions (“CI/CD”) y especificación para DigitalOcean App Platform
+- Código fuente (configuración, modelo, repositorio, servicio, controlador, rutas, middlewares, utilidades)
+- Pruebas unitarias e integración con Jest + Supertest
+- Instrucciones detalladas paso a paso y explicaciones
+
+----------------------------------------------------------------
+
+PUNTO 1. ESTRUCTURA DEL PROYECTO
+Organizo la aplicación de la siguiente forma:
+
+GESTOREV000/
+├── .github/
+│   └── workflows/ci-cd.yml
+├── .do/
+│   └── app.yaml
+├── Dockerfile
+├── .dockerignore
+├── src/
+│   ├── config/
+│   │   ├── database.ts
+│   │   └── logger.ts
+│   ├── controllers/
+│   │   ├── authController.ts
+│   │   └── userController.ts
+│   ├── middlewares/
+│   │   ├── authMiddleware.ts
+│   │   ├── errorHandler.ts
+│   │   └── validateRequest.ts
+│   ├── models/
+│   │   └── User.ts
+│   ├── repositories/
+│   │   └── userRepository.ts
+│   ├── services/
+│   │   └── userService.ts
+│   ├── routes/
+│   │   ├── authRoutes.ts
+│   │   └── userRoutes.ts
+│   ├── utils/
+│   │   └── hash.ts
+│   ├── app.ts
+│   └── server.ts
+├── src/tests/
+│   ├── integration/
+│   │   └── userRoutes.spec.ts
+│   └── unit/
+│       ├── userService.spec.ts
+│       └── authController.spec.ts
+├── .env
+├── .env.test
+├── jest.config.js
+├── tsconfig.json
+├── package.json
+└── README.md
+
+Explicación rápida
+- config/: ajustes de BD y logger
+- models/: definición de esquema Sequelize
+- repositories/: acceso a datos, queries aisladas
+- services/: lógica de negocio (hash, JWT…)
+- controllers/: mapeo HTTP ⇄ servicios
+- routes/: validaciones + controladores
+- middlewares/: auth, errores, validaciones
+- utils/: helpers (bcrypt wrappers)
+- tests/: unitarias (servicios) e integración (endpoints)
+- .do/app.yaml: spec para App Platform de DigitalOcean
+- .github/workflows/ci-cd.yml: tests + build + deploy
+
+
+
+
+
+
+----------------------------------------------------------------
+PUNTO 2. CONFIGURACIÓN E INSTALACIÓN
+
+2.1- package.json
+
+npm init -y
+npm install express sequelize mysql2 dotenv bcrypt jsonwebtoken express-validator helmet cors compression morgan winston
+npm install -D typescript ts-node nodemon jest ts-jest @types/node @types/express @types/bcrypt @types/jsonwebtoken supertest @types/supertest
+
+2.2- tsconfig.json
+
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
+
+2.3- jest.config.js
+
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  testMatch: ['<rootDir>/src/tests/**/*.spec.ts'],
+  setupFiles: ['dotenv/config']
+};
+
+2.4- .env (desarrollo)
+
+DB_NAME=mi_basedatos
+DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña
+DB_HOST=localhost
+JWT_SECRET=tu_secreto_jwt
+JWT_EXPIRES_IN=1h
+BCRYPT_SALT_ROUNDS=10
+PORT=3000
+
+2.5 .env.test (test - base de datos SQLite en memoria)
+
+NODE_ENV=test
+DB_DIALECT=sqlite
+DB_STORAGE=:memory:
+JWT_SECRET=test_secret
+BCRYPT_SALT_ROUNDS=4
+PORT=0
+
+
+
+----------------------------------------------------------------
+PUNTO 3. DOCKER + DIGITALOCEAN APP Platform + GITHUB Actions
+
+3.1- Dockerfile
+
+Dockerfile
+
+# Etapa de build
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json tsconfig.json ./
+RUN npm ci
+COPY src ./src
+RUN npm run build
+
+# Etapa runtime
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --production
+COPY --from=builder /app/dist ./dist
+COPY .env ./
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+
+
+.dockerignore
+
+node_modules
+src
+tests
+.git
+
+
+
+3.2 DigitalOcean App Spec (.do/app.yaml)
+
+name: GESTOREV000
+services:
+  - name: api
+    dockerfile_path: Dockerfile
+    run_command: "npm run start"
+    environment_slug: docker
+    github:
+      repo: tu_usuario/mi-app
+      branch: main
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /
+databases:
+  - name: db-mysql
+    engine: mysql
+    version: "8"
+    size: db-s-1vcpu-1gb
+    region: sfo
+
+Luego en tu Dashboard de DigitalOcean 
+→ Apps → “Import from spec” → selecciona .do/app.yaml y añade las variables de entorno.
+
+
+
+3.3 CI/CD con GitHub Actions
+
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: { node-version: '18' }
+      - run: npm ci
+      - run: npm run test
+
+  build_and_deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: { node-version: '18' }
+      - run: npm ci
+      - run: npm run build
+      - name: Push to Docker registry
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
+      - name: Deploy to DigitalOcean App Platform
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      - run: doctl apps update $(doctl apps list --format ID --no-header --name mi-app-node) --spec .do/app.yaml
+
+Nota: configura en GitHub → Settings → Secrets → DIGITALOCEAN_TOKEN.
+
+
+
+
+---------------------------------------------------------------
+PUNTO 4- CONFIGURACIÓN Y LOGGER
+
+4.1 src/config/database.ts
+
+import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const isTest = process.env.NODE_ENV === 'test';
+
+const sequelize = new Sequelize({
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  dialect: (process.env.DB_DIALECT as any) || 'mysql',
+  storage: isTest ? process.env.DB_STORAGE : undefined,
+  logging: false,
+  pool: {
+    max: 10, min: 0, acquire: 30000, idle: 10000
+  }
+});
+
+export default sequelize;
+
+4.2 src/config/logger.ts
+
+import winston from 'winston';
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(), winston.format.json()
+  ),
+  transports: [
+    new winston.transports.Console()
+  ]
+});
+
+export default logger;
+
+
+
+---------------------------------------------------------------
+PUNTO 5. MODELO Y REPOSITORIO
+
+Punto 5.1 Modelo de Usuario
+Crea el archivo src/models/User.ts:
+
+import { DataTypes, Model, Optional } from 'sequelize';
+import sequelize from '../config/database';
+
+interface UserAttributes {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+}
+
+interface UserCreationAttributes extends Optional<UserAttributes,'id'> {}
+
+class User extends Model<UserAttributes, UserCreationAttributes>
+  implements UserAttributes {
+  id!: number;
+  username!: string;
+  email!: string;
+  password!: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+
+  toJSON() {
+    const values = { ...this.get() } as any;
+    delete values.password;
+    return values;
+  }
+}
+
+User.init({
+  id: { type: DataTypes.INTEGER.UNSIGNED, autoIncrement: true, primaryKey: true },
+  username: { type: DataTypes.STRING(128), allowNull: false },
+  email: {
+    type: DataTypes.STRING(128),
+    allowNull: false,
+    unique: true,
+    validate: { isEmail: true }
+  },
+  password: { type: DataTypes.STRING(128), allowNull: false }
+}, {
+  tableName: 'users',
+  sequelize
+});
+
+export default User;
+
+
+
+
+
+
+
+
+
+3.3 Middleware para Validaciones
+Crea el archivo src/middlewares/validate.ts para implementar validaciones usando express-validator:
+
+---
+import { Request, Response, NextFunction } from 'express';
+import { validationResult } from 'express-validator';
+
+export const validateRequest = (req: Request, res: Response, next: NextFunction) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
+};
+---
+
+
+
+3.4 Controlador de Usuarios
+Crea el archivo src/controllers/userController.ts:
+
+---
+import { Request, Response } from 'express';
+import User from '../models/User';
+
+/* Listar todos los usuarios */
+export const getUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await User.findAll();
+    res.json(users);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/* Obtener un usuario por id */
+export const getUserById = async (req: Request, res: Response) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+    res.json(user);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/* Crear un nuevo usuario */
+export const createUser = async (req: Request, res: Response) => {
+  try {
+    const { username, email, password } = req.body;
+    // En un caso real, la contraseña debe ser encriptada antes de guardar.
+    const newUser = await User.create({ username, email, password });
+    res.status(201).json(newUser);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/* Actualizar un usuario */
+export const updateUser = async (req: Request, res: Response) => {
+  try {
+    const { username, email, password } = req.body;
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+
+    user.username = username || user.username;
+    user.email = email || user.email;
+    user.password = password || user.password;
+    await user.save();
+
+    res.json(user);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/* Eliminar un usuario */
+export const deleteUser = async (req: Request, res: Response) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+
+    await user.destroy();
+    res.json({ message: 'Usuario eliminado correctamente' });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+---
+
+
+3.5 Rutas de Usuarios
+Crea el archivo src/routes/userRoutes.ts:
+
+
+---
+import { Router } from 'express';
+import { body } from 'express-validator';
+import {
+  getUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+} from '../controllers/userController';
+import { validateRequest } from '../middlewares/validate';
+
+const router = Router();
+
+// Obtener todos los usuarios
+router.get('/', getUsers);
+
+// Obtener un usuario por id
+router.get('/:id', getUserById);
+
+// Crear un usuario (validando que se envíen los datos necesarios)
+router.post(
+  '/',
+  [
+    body('username').notEmpty().withMessage('El username es requerido'),
+    body('email').isEmail().withMessage('Debe ser un email válido'),
+    body('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
+  ],
+  validateRequest,
+  createUser
+);
+
+// Actualizar usuario
+router.put(
+  '/:id',
+  [
+    // Los validadores son opcionales para actualizar, pero se pueden incluir para controlar el formato.
+    body('email').optional().isEmail().withMessage('Debe ser un email válido'),
+    body('password').optional().isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
+  ],
+  validateRequest,
+  updateUser
+);
+
+// Eliminar usuario
+router.delete('/:id', deleteUser);
+
+export default router;
+---
+
+3.6 Archivo Principal de la Aplicación
+Crea el archivo src/app.ts:
+
+---
+import express from 'express';
+import dotenv from 'dotenv';
+import sequelize from './config/database';
+import userRoutes from './routes/userRoutes';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json()); // Para parsear JSON en las requests
+
+// Rutas de la API de usuarios
+app.use('/api/users', userRoutes);
+
+// Ruta básica para probar el servidor
+app.get('/', (req, res) => {
+  res.send('API de Usuarios funcionando');
+});
+
+// Sincronizamos la base de datos y luego iniciamos el servidor
+sequelize
+  .sync()
+  .then(() => {
+    console.log('Base de datos conectada y sincronizada');
+    app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+  })
+  .catch((error) => console.error('Error al conectar con la base de datos:', error));
+
+---
+
+
+---------------------------------------------------------------
+PUNTO 4. Archivo de Variables de Entorno (.env)
+Crea un archivo .env en la raíz del proyecto y define las variables necesarias
+
+---
+DB_NAME=mi_basedatos
+DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña
+DB_HOST=localhost
+PORT=3000
+---
+
+
+----------------------------------------------------------------
+PUNTO 5. Scripts para Desarrollo y Ejecución
+Agrega en tu package.json unos scripts para facilitar el desarrollo:
+"scripts": {
+  "dev": "nodemon --exec ts-node src/app.ts",
+  "build": "tsc",
+  "start": "node dist/app.js"
+}
+
+Con npm run dev inicias el servidor en modo desarrollo (con recarga automática). 
+Con npm run build transpilas el código TypeScript a JavaScript y npm run start ejecutas el código compilado.

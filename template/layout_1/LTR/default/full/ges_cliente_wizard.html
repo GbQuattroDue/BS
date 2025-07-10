@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Gestore App</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+		type="text/css">
+	<link href="../../../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script src="../../../../global_assets/js/main/jquery.min.js"></script>
+	<script src="../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script src="../../../../global_assets/js/plugins/forms/wizards/steps.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/inputs/inputmask.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/validation/validate.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/extensions/cookie.js"></script>
+
+	<script src="assets/js/app.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/form_wizard.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+<!-- HEAD: ACA TERMINA -->
+
+
+<body>
+
+	<!-- MENÚ FILA SUPERIOR -->
+	<!-- Main navbar -->
+	<div class="navbar navbar-expand-lg navbar-dark navbar-static">
+		<div class="d-flex flex-1 d-lg-none">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+				<i class="icon-paragraph-justify3"></i>
+			</button>
+			<button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+				<i class="icon-transmission"></i>
+			</button>
+		</div>
+
+		<div class="navbar-brand text-center text-lg-left">
+			<a href="index.html" class="d-inline-block">
+				<img src="../../../../global_assets/images/logo_light.png" class="d-none d-sm-block" alt="Logo">
+				<img src="../../../../global_assets/images/logo_icon_light.png" class="d-sm-none" alt="Logo">
+			</a>
+		</div>
+
+		<div class="collapse navbar-collapse order-2 order-lg-1" id="navbar-mobile">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link">
+						Ventas
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link">
+						Compras
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link">
+						Finanzas
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link">
+						Contabilidad
+					</a>
+				</li>
+			</ul>
+
+
+			<ul class="navbar-nav ml-lg-auto">
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link">
+						Configuración
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<ul class="navbar-nav flex-row order-1 order-lg-2 flex-1 flex-lg-0 justify-content-end align-items-center">
+
+
+			<li class="nav-item nav-item-dropdown-lg dropdown dropdown-user h-100">
+				<a href="#"
+					class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100"
+					data-toggle="dropdown">
+					<img src="../../../../global_assets/images/placeholders/GBperfil.jpg" class="rounded-pill mr-lg-2"
+						height="34" alt="">
+					<span class="d-none d-lg-inline-block">Gabriel</span>
+				</a>
+
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="#" class="dropdown-item">Editar</a>
+					<a href="#" class="dropdown-item">Tareas pendientes</a>
+					<a href="#" class="dropdown-item">
+						Mensajes internos
+						<span class="badge badge-primary badge-pill ml-auto">2</span>
+					</a>
+					<div class="dropdown-divider"></div>
+					<a href="#" class="dropdown-item">Cerrar cesion</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- /main navbar -->
+
+	<!--  MENU LATERAL -->
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main sidebar -->
+		<div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
+
+			<!-- Sidebar content -->
+			<div class="sidebar-content">
+
+				<!-- User menu -->
+				<div class="sidebar-section sidebar-user my-1">
+					<div class="sidebar-section-body">
+						<div class="media">
+
+							<a href="#" class="mr-3">
+								<img src="../../../../global_assets/images/placeholders/GBperfil.png"
+									class="rounded-circle" alt="">
+							</a>
+
+							<div class="media-body">
+								<div class="font-weight-semibold">Gabriel Baron</div>
+								<div class="font-size-sm line-height-sm opacity-50">
+									Severisimo Director
+								</div>
+							</div>
+
+							<div class="ml-3 align-self-center">
+								<button type="button"
+									class="btn btn-outline-light-100 text-white border-transparent btn-icon rounded-pill btn-sm sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
+									<i class="icon-transmission"></i>
+								</button>
+
+								<button type="button"
+									class="btn btn-outline-light-100 text-white border-transparent btn-icon rounded-pill btn-sm sidebar-mobile-main-toggle d-lg-none">
+									<i class="icon-cross2"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /user menu -->
+
+				<!-- Main navigation -->
+				<div class="sidebar-section">
+					<ul class="nav nav-sidebar" data-nav-type="accordion">
+
+						<!-- Layout -->
+						<li class="nav-item-header">
+							<div class="text-uppercase font-size-xs line-height-xs">Gestion</div> <i class="icon-menu"
+								title="Layout options"></i>
+						</li> <!-- Layout -->
+
+						<!-- Menu 2do nivel //////////////////// VENTAS /////////////////////////-->
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Ventas</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Page layouts">
+								<li class="nav-item"><a href="index.html" class="nav-link">Nuevo pedido</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Confirmar</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Listar pedidos</a></li>
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Nuevo Cliente</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Consultar Clientes</a></li>
+							</ul>
+						</li>
+
+						<!-- Menu 2do nivel //////////////////// COMPRAS /////////////////////////-->
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Compras</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Page layouts">
+								<li class="nav-item"><a href="index.html" class="nav-link">Nueva compra</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Asignar cta contable</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Listar compras</a></li>
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Nuevo Proveedor</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Consultar Proveedores</a>
+								</li>
+							</ul>
+						</li>
+
+						<!-- Menu 2do nivel //////////////////// PRODUCCION /////////////////////////-->
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Produccion</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Page layouts">
+								<li class="nav-item"><a href="index.html" class="nav-link">Produccion Semanal</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">ABM Inventarios></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Listar Inventarios</a></li>
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Ajustes de Produccion</a>
+								</li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Consultar Produccion</a></li>
+							</ul>
+						</li>
+
+						<!-- Menu 2do nivel //////////////////// FINANZAS /////////////////////////-->
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Finanzas</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Page layouts">
+								<li class="nav-item"><a href="index.html" class="nav-link">Cobranzas a Clientes</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Pagos a Proveedores</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Listar Cobranzas</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Listar Pagos</a></li>
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Otras Operaciones</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Consultar Finanzas</a></li>
+							</ul>
+						</li>
+
+						<!-- Menu 2do nivel //////////////////// CONTABILIDAD /////////////////////////-->
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Contabilidad</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Page layouts">
+								<li class="nav-item"><a href="index.html" class="nav-link">ABM Cuentas Contables</a>
+								</li>
+								<li class="nav-item"><a href="index.html" class="nav-link">ABM Presupuesto</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Listar Presupuesto</a></li>
+								<li class="nav-item"><a href="index.html" class="nav-link">Listar Movimientos</a></li>
+							</ul>
+						</li>
+
+						<!-- /layout -->
+
+					</ul>
+				</div>
+				<!-- /main navigation -->
+
+			</div>
+			<!-- /sidebar content -->
+
+		</div>
+		<!-- /main sidebar -->
+
+
+		<!--////////////////////////////////////// MENUS: ACA FINALIZA/////////////////////////////////////////////////-->
+		<!--///////////////////////////Copiar: Main navbar y "main sidebar"////////////////////////////////////////////-->
+		<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Inner content -->
+			<div class="content-inner">
+
+
+
+				<!-- Content area -->
+				<div class="content">
+
+
+
+					<!-- Wizard with validation GESTORE -->
+					<div class="card">
+						<div class="card-header bg-white header-elements-inline">
+							<h6 class="card-title">Nuevo Cliente</h6>
+						</div>
+
+						<form class="wizard-form steps-validation" action="#" data-fouc>
+							<h6>Datos del cliente</h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Razon Social: <span class="text-danger">*</span></label>
+											<input type="text" name="razon_social" class="form-control required"
+												placeholder="Denominacion o nombre legal">
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Denominacion comercial: <span class="text-danger">*</span></label>
+											<input type="text" name="den_comercial" class="form-control required"
+												placeholder="Denominacion comercial">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Contacto: <span class="text-danger">*</span></label>
+											<input type="text" name="contacto" class="form-control required"
+												placeholder="Nombre y Apellido del dueño o contacto">
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Email de compras: <span class="text-danger">*</span></label>
+											<input type="email" name="email" class="form-control required"
+												placeholder="compras@delcliente.com">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Telefono: <span class="text-danger">*</span></label>
+											<input type="text" name="telefono" class="form-control required"
+												placeholder="+54-9-261-1234-567">
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Cliente tipo:</label>
+											<select name="cliente_tipo_id" class="custom-select">
+												<option value="1" selected>Distribuidor</option>
+												<option value="2">Mayorista</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+
+							<h6>Datos fiscales</h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Documento tipo:</label>
+											<select name="documento_tipo_id" class="custom-select">
+												<option value="1" selected>CUIT</option>
+												<option value="2">DNI</option>
+												<option value="3">CUIL</option>
+												<option value="4">LE</option>
+												<option value="5">LC</option>
+												<option value="6">CI extranjera</option>
+												<option value="7">Pasaporte</option>
+												<option value="8">Sin identificar</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>CUIT/DNI: <span class="text-danger">*</span></label>
+											<input type="text" name="numero_documento" class="form-control required"
+												placeholder="30-71560513-5">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Direccion fiscal: <span class="text-danger">*</span></label>
+											<input type="text" name="direccion_fiscal"
+												placeholder="Direccion completa con departamento y localidad"
+												class="form-control required">
+										</div>
+									</div>
+
+									<div class="col-lg-2">
+										<div class="form-group">
+											<label>Codigo Postal fiscal: <span class="text-danger">*</span></label>
+											<input type="text" name="codigo_postal_fiscal"
+												placeholder="Codigo postal fiscal" class="form-control required">
+										</div>
+									</div>
+
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label>Provincia:</label>
+											<select name="provincia_id" class="custom-select">
+												<option value="1" selected>BUENOS AIRES</option>
+												<option value="2">CATAMARCA</option>
+												<option value="3">CHACO</option>
+												<option value="4">CHUBUT</option>
+												<option value="5">CORDOBA</option>
+												<option value="6">CORRIENTES</option>
+												<option value="7">ENTRE RIOS</option>
+												<option value="8">FORMOSA</option>
+												<option value="9">JUJUY</option>
+												<option value="10">LA PAMPA</option>
+												<option value="11">LA RIOJA</option>
+												<option value="12">MENDOZA</option>
+												<option value="13">MISIONES</option>
+												<option value="14">NEUQUEN</option>
+												<option value="15">RIO NEGRO</option>
+												<option value="16">SALTA</option>
+												<option value="17">SAN JUAN</option>
+												<option value="18">SAN LUIS</option>
+												<option value="19">SANTA CRUZ</option>
+												<option value="20">SANTA FE</option>
+												<option value="21">SANTIAGO</option>
+												<option value="22">TIERRA DEL FUEGO</option>
+												<option value="23">TUCUMAN</option>
+												<option value="24">CABA</option>
+											</select>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Tipo de Responsable:</label>
+											<select name="responsable_iva_tipo_id" class="custom-select">
+												<option value="1" selected>IVA Responsable Inscripto</option>
+												<option value="2">Consumidor final</option>
+												<option value="3">IVA Responsable no Inscripto</option>
+												<option value="4">IVA no Responsable</option>
+												<option value="5">IVA Sujeto Exento</option>
+												<option value="6">Monotributo Reg Simplificado</option>
+												<option value="7">Sujeto No Categorizado</option>
+												<option value="8">Proveedor del Exterior</option>
+												<option value="9">Cliente del Exterior</option>
+												<option value="10">IVA Liberado Ley 19.640</option>
+												<option value="11">IVA Resp Inscripto Agente de Percep</option>
+												<option value="12">Pequeño Contribuyente Eventual</option>
+												<option value="13">Monotributista Social</option>
+												<option value="14">Pequeño Contribuyente Eventual Social</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Tipo de facturacion:</label>
+											<select name="responsable_iva_tipo_id" class="custom-select">
+												<option value="1" selected>Sin asignar</option>
+												<option value="2">Facturacion legal</option>
+												<option value="3">Facturacion 50%</option>
+												<option value="4">Facturacion Blue</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+
+							<h6>Destino de envios</h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Direccion de envios: <span class="text-danger">*</span></label>
+											<input type="text" name="direccion_envios"
+												placeholder="Direccion completa con departamento y localidad"
+												class="form-control required">
+										</div>
+									</div>
+
+									<div class="col-lg-2">
+										<div class="form-group">
+											<label>Codigo Postal destino: <span class="text-danger">*</span></label>
+											<input type="text" name="codigo_postal_envios"
+												placeholder="Codigo postal envios" class="form-control required">
+										</div>
+									</div>
+
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label>Provincia destino:</label>
+											<select name="provincia_envios_id" class="custom-select">
+												<option value="1" selected>BUENOS AIRES</option>
+												<option value="2">CATAMARCA</option>
+												<option value="3">CHACO</option>
+												<option value="4">CHUBUT</option>
+												<option value="5">CORDOBA</option>
+												<option value="6">CORRIENTES</option>
+												<option value="7">ENTRE RIOS</option>
+												<option value="8">FORMOSA</option>
+												<option value="9">JUJUY</option>
+												<option value="10">LA PAMPA</option>
+												<option value="11">LA RIOJA</option>
+												<option value="12">MENDOZA</option>
+												<option value="13">MISIONES</option>
+												<option value="14">NEUQUEN</option>
+												<option value="15">RIO NEGRO</option>
+												<option value="16">SALTA</option>
+												<option value="17">SAN JUAN</option>
+												<option value="18">SAN LUIS</option>
+												<option value="19">SANTA CRUZ</option>
+												<option value="20">SANTA FE</option>
+												<option value="21">SANTIAGO</option>
+												<option value="22">TIERRA DEL FUEGO</option>
+												<option value="23">TUCUMAN</option>
+												<option value="24">CABA</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Transporte: </label>
+											<input type="text" name="transporte_envios" class="form-control"
+												placeholder="Transporte principal y dirección de este">
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Ubicacion en google maps: </label>
+											<input type="url" name="envios_en_google" class="form-control"
+												placeholder="Link de google maps">
+										</div>
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Observaciones:</label>
+											<textarea name="envios_observaciones" rows="4" cols="4"
+												placeholder="Aclaraciones para envíos" class="form-control"></textarea>
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Notas:</label>
+											<textarea name="envios_notas" rows="4" cols="4"
+												placeholder="Notas sobre el deposito del cliente"
+												class="form-control"></textarea>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+
+							<h6>Info adicional</h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Historial del cliente:</label>
+											<textarea name="additional-info" rows="5" cols="5"
+												placeholder="Historial con el cliente. Fecha de cumpleaños, encargados, etc."
+												class="form-control"></textarea>
+										</div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Cliente desde: </label>
+											<input type="text" name="creado" class="form-control"
+												placeholder="Desde hoy">
+										</div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Ultima compra: </label>
+											<input type="text" name="modificado" class="form-control"
+												placeholder="Ultima compra">
+										</div>
+									</div>
+
+
+
+
+
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<!-- /wizard with validation GESTORE --
+				</div>
+				<!-- /content area -->
+
+					<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+					<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+					<!--///////////////////////////////////////////FOOTER: INICIO/////////////////////////////////////////////-->
+					<!-- Footer -->
+					<div class="navbar navbar-expand-lg navbar-light border-bottom-0 border-top">
+						<div class="text-center d-lg-none w-100">
+							<button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse"
+								data-target="#navbar-footer">
+								<i class="icon-unfold mr-2"></i>
+								Footer
+							</button>
+						</div>
+
+						<div class="navbar-collapse collapse" id="navbar-footer">
+							<span class="navbar-text">
+								&copy; 2022 <a href="#">Gestore App</a> is power by <a
+									href="https://themeforest.net/user/Kopyov" target="_blank">BSimple.com</a>
+							</span>
+
+							<ul class="navbar-nav ml-lg-auto">
+								<li class="nav-item"><a href="https://kopyov.ticksy.com/" class="navbar-nav-link"
+										target="_blank"><i class="icon-lifebuoy mr-2"></i> Soporte</a></li>
+								<li class="nav-item"><a href="https://demo.interface.club/limitless/docs/"
+										class="navbar-nav-link" target="_blank"><i class="icon-file-text2 mr-2"></i>
+										Docs</a></li>
+								<li class="nav-item"><a
+										href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328?ref=kopyov"
+										class="navbar-nav-link font-weight-semibold"><span class="text-pink"><i
+												class="icon-cart2 mr-2"></i> Pedidos</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- /footer -->
+					<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+					<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+					<!--///////////////////////////////////////////FOOTER: FIN////////////////////////////////////////////////-->
+
+
+				</div>
+				<!-- /inner content -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+</body>
+
+</html>

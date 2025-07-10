@@ -1,0 +1,19 @@
+name: GESTOREV000
+services:
+  - name: api
+    dockerfile_path: Dockerfile
+    run_command: "npm run start"
+    environment_slug: docker
+    github:
+      repo: tu_usuario/mi-app
+      branch: main
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /
+databases:
+  - name: db-mysql
+    engine: mysql
+    version: "8"
+    size: db-s-1vcpu-1gb
+    region: sfo

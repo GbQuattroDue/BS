@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Gestore App > Nuevo pedido</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="../../../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script src="../../../../global_assets/js/main/jquery.min.js"></script>
+	<script src="../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script src="../../../../global_assets/js/plugins/forms/wizards/steps.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/inputs/inputmask.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/validation/validate.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/extensions/cookie.js"></script>
+
+	<script src="assets/js/app.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/form_wizard.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+
+
+<body>
+
+<!--
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////  M A I N   N A V B A R  ///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+	<!-- Main navbar -->
+	<div class="navbar navbar-expand-lg navbar-dark navbar-static">
+		<div class="navbar-brand ml-2 ml-lg-0">
+			<a href="index.html" class="d-inline-block">
+				<img src="../../../../global_assets/images/logo_light.png" alt="">
+			</a>
+		</div>
+
+		<div class="d-flex justify-content-end align-items-center ml-auto">
+			<ul class="navbar-nav flex-row">
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link">
+						<i class="icon-lifebuoy"></i>
+						<span class="d-none d-lg-inline-block ml-2">Soporte</span>
+					</a>
+				</li>
+				
+				<!--
+				<li class="nav-item">
+					<a href="ges_login_registration_advanced" class="navbar-nav-link">
+						<i class="icon-user-plus"></i>
+						<span class="d-none d-lg-inline-block ml-2">Registro</span>
+					</a>
+				</li>
+				 
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link">
+						<i class="icon-user-lock"></i>
+						<span class="d-none d-lg-inline-block ml-2">Ingresar</span>
+					</a>
+				</li>
+				-->
+
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+<!--
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////// fin de  M A I N   N A V B A R  ////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+
+
+	
+
+
+	<!-- ------------------------------------------->
+	<!-- Page content -->
+	<div class="page-content">
+
+		
+<!--////////////////////////////////////// MENUS: ACA FINALIZA/////////////////////////////////////////////////-->
+<!--///////////////////////////Copiar: Main navbar y "main sidebar"////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Inner content -->
+			<div class="content-inner">
+
+
+
+				<!-- Content area -->
+				<div class="content">
+
+
+
+		            <!-- Wizard with validation GESTORE -->
+		            <div class="card">
+						<div class="card-header bg-white header-elements-inline">
+							<h5 class="card-title col-2"><strong>Cargar pedido Distribuidor ></strong></h5>
+							<h6 class="card-title col-8 text-left">Por favor, ingrese las cantidades de paquetes requeridos debajo de cada "color"</h6>
+							<h6 class="card-title col-1 text-right">Subtotal</h6>
+							<input type="number" class="form-control text-right col-1" readonly value="$ 0">							
+						</div>
+
+
+
+	                	<form class="wizard-form steps-validation" action="#" data-fouc>
+							<h6><b>Bandeja</br>pesada</b></h6>
+							<fieldset>
+								<!-- Small table -->
+								<div class="card">
+									<!--
+									<div class="card-header">
+										<h5 class="card-title">Bandejas pesadas Aitana</h5>
+									</div>
+
+									<div class="card-body">
+										Complete con las <code>cantidades</code> deseadas de cada <code>color</code> por favor y haga click en <code>Next</code>. 
+									</div>
+									-->
+
+									<div class="table-responsive" > 
+										<table class="table table-xs table-striped table-hover table-bordered">
+											<thead>
+												<tr class="column flex-sm-column justify-self">
+													<th class="col-1 text-center table-success">Bandeja</br>Aitana</th>
+													<th class="col-1 text-center table-success">Cantidad</br>x Paq</th>
+													<th class="col-1 text-center table-success">Peso</br>aprox</th>
+													<th class="col-1 text-center table-success">Precio May</br>x bandeja</th>
+													<th class="col-1 text-center table-success">Precio May</br>x paquete</th>
+													<th class="col-1 text-center table-success">Costo Dist</br>x bandeja</th>
+													<th class="col-1 text-center table-success">Costo Dist</br>x paquete</th>
+													<th class="col-1 text-center table-success">PEDIDO</br>Cantidad</th>
+													<th class="col-1 text-center table-success">PEDIDO</br>Monto</th>
+													<th class="col-1 text-center table-success">Color</br>Oro</th>
+													<th class="col-1 text-center table-success">Color</br>Rosa</th>
+													<th class="col-1 text-center table-success">Colo</br>Celeste</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>■<b> 39x49 </b></td>
+													<td class="text-center">x25 unid</td>
+													<td class="text-center">6.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>■<b> 34x44 </b></td>
+													<td class="text-center">x25 unid</td>
+													<td class="text-center">5.00 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>■<b> 31x41 </b></td>
+													<td class="text-center">x25 unid</td>
+													<td class="text-center">4.00 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>												
+												</tr>
+												<tr>
+													<td>■<b> 30x35 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">3.00 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>												
+												</tr>
+												<tr>
+													<td>■<b> 26x31 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">2.00 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>												
+												</tr>
+												<tr>
+													<td>■<b> 21x28 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">1.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>■<b> 19x40 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">1.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>■<b> 18x24 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">0.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>■<b> 14x21 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">0.30 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>■<b> 13x29 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">0.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>																								
+												<tr>
+													<td>⚫︎<b> Ø 39 </b></td>
+													<td class="text-center">x25 unid</td>
+													<td class="text-center">4.00 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>												
+												</tr>
+												<tr>
+													<td>⚫︎<b> Ø 36 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">3.00 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>												
+												</tr>
+												<tr>
+													<td>⚫︎<b> Ø 32 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">2.00 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></tds=>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>												
+												</tr>
+												<tr>
+													<td>⚫︎<b> Ø 30 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">1.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>⚫︎<b> Ø 28 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">1.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>⚫︎<b> Ø 26 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">0.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></tds=>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>⚫︎<b> Ø 24 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">0.30 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></tds=>	
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>⚫︎<b> Ø 21 </b></td>
+													<td class="text-center">x50 unid</td>
+													<td class="text-center">0.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></tdass=>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>🖤<b> Grande </b></td>
+													<td class="text-center">x25 unid</td>
+													<td class="text-center">0.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>🖤<b> Mediano </b></td>
+													<td class="text-center">x25 unid</td>
+													<td class="text-center">0.30 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></tdlass=>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>
+												<tr>
+													<td>🖤<b> Pequeño </b></td>
+													<td class="text-center">x25 unid</td>
+													<td class="text-center">0.50 kg</td>
+													<td class="text-right">$ 1.092</td>
+													<td class="text-right">$27.300</td>
+													<td class="text-right"><b>$ 819</b></td>
+													<td class="text-right"><b>$20.745</b></td>													
+													<td class="text-right"><b>0</b</td>
+													<td class="text-right"><b>$ 0</b></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+													<td><input type="number" value="0" class="form-control form-control-sm text-right"></td>
+												</tr>												
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!-- /small table -->
+							</fieldset>
+
+							<h6><b>Plato premium</br>1.25 mm</b></h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Documento tipo:</label>
+		                                    <select name="documento_tipo_id" class="custom-select">
+		                                        <option value="1" selected>CUIT</option> 
+		                                        <option value="2">DNI</option> 
+		                                        <option value="3">CUIL</option> 
+		                                        <option value="4">LE</option>
+												<option value="5">LC</option>
+												<option value="6">CI extranjera</option>
+												<option value="7">Pasaporte</option>
+												<option value="8">Sin identificar</option> 
+		                                    </select>
+	                                    </div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>CUIT/DNI: <span class="text-danger">*</span></label>
+											<input type="text" name="numero_documento" class="form-control required" placeholder="30-71560513-5">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Direccion fiscal: <span class="text-danger">*</span></label>
+			                                <input type="text" name="direccion_fiscal" placeholder="Direccion completa con departamento y localidad" class="form-control required">
+		                                </div>
+									</div>
+
+									<div class="col-lg-2">
+											<div class="form-group">
+												<label>Codigo Postal fiscal: <span class="text-danger">*</span></label>
+			                                	<input type="text" name="codigo_postal_fiscal" placeholder="Codigo postal fiscal" class="form-control required">
+		                                	</div>
+									</div>
+									
+									<div class="col-lg-4">
+											<div class="form-group">
+												<label>Provincia:</label>
+												<select name="provincia_id" class="custom-select">
+													<option value="1" selected>BUENOS AIRES</option> 
+													<option value="2">CATAMARCA</option> 
+													<option value="3">CHACO</option> 
+													<option value="4">CHUBUT</option>
+													<option value="5">CORDOBA</option>
+													<option value="6">CORRIENTES</option>
+													<option value="7">ENTRE RIOS</option>
+													<option value="8">FORMOSA</option>
+													<option value="9">JUJUY</option>
+													<option value="10">LA PAMPA</option>
+													<option value="11">LA RIOJA</option>
+													<option value="12">MENDOZA</option>
+													<option value="13">MISIONES</option>
+													<option value="14">NEUQUEN</option>
+													<option value="15">RIO NEGRO</option>
+													<option value="16">SALTA</option>
+													<option value="17">SAN JUAN</option>
+													<option value="18">SAN LUIS</option>
+													<option value="19">SANTA CRUZ</option>
+													<option value="20">SANTA FE</option>
+													<option value="21">SANTIAGO</option>
+													<option value="22">TIERRA DEL FUEGO</option>
+													<option value="23">TUCUMAN</option>
+													<option value="24">CABA</option>
+												</select>
+											</div>
+									</div>
+									
+								</div>
+
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Tipo de Responsable:</label>
+		                                    <select name="responsable_iva_tipo_id" class="custom-select">
+		                                        <option value="1" selected>IVA Responsable Inscripto</option> 
+		                                        <option value="2">Consumidor final</option> 
+												<option value="3">IVA Responsable no Inscripto</option> 
+												<option value="4">IVA no Responsable</option>
+												<option value="5">IVA Sujeto Exento</option>
+												<option value="6">Monotributo Reg Simplificado</option>
+												<option value="7">Sujeto No Categorizado</option>
+												<option value="8">Proveedor del Exterior</option>
+												<option value="9">Cliente del Exterior</option>
+												<option value="10">IVA Liberado Ley 19.640</option>
+												<option value="11">IVA Resp Inscripto Agente de Percep</option>
+												<option value="12">Pequeño Contribuyente Eventual</option>
+												<option value="13">Monotributista Social</option>
+												<option value="14">Pequeño Contribuyente Eventual Social</option>
+		                                    </select>
+	                                    </div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Tipo de facturacion:</label>
+		                                    <select name="responsable_iva_tipo_id" class="custom-select">
+		                                       	<option value="1" selected>Sin asignar</option> 
+		                                       	<option value="2">Facturacion legal</option> 
+		                                       	<option value="3">Facturacion 50%</option> 
+		                                       	<option value="4">Facturacion Blue</option>
+		                                    	</select>
+	                                    </div>
+									</div>
+								</div>
+							</fieldset>
+
+							<h6><b>Plato premium</br>2.00 mm</b></h6>
+							<fieldset>
+								<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label>Direccion de envios: <span class="text-danger">*</span></label>
+			                                	<input type="text" name="direccion_envios" placeholder="Direccion completa con departamento y localidad" class="form-control required">
+		                                	</div>
+										</div>
+
+										<div class="col-lg-2">
+											<div class="form-group">
+												<label>Codigo Postal destino: <span class="text-danger">*</span></label>
+			                                	<input type="text" name="codigo_postal_envios" placeholder="Codigo postal envios" class="form-control required">
+		                                	</div>
+										</div>
+									
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label>Provincia destino:</label>
+												<select name="provincia_envios_id" class="custom-select">
+													<option value="1" selected>BUENOS AIRES</option> 
+													<option value="2">CATAMARCA</option> 
+													<option value="3">CHACO</option> 
+													<option value="4">CHUBUT</option>
+													<option value="5">CORDOBA</option>
+													<option value="6">CORRIENTES</option>
+													<option value="7">ENTRE RIOS</option>
+													<option value="8">FORMOSA</option>
+													<option value="9">JUJUY</option>
+													<option value="10">LA PAMPA</option>
+													<option value="11">LA RIOJA</option>
+													<option value="12">MENDOZA</option>
+													<option value="13">MISIONES</option>
+													<option value="14">NEUQUEN</option>
+													<option value="15">RIO NEGRO</option>
+													<option value="16">SALTA</option>
+													<option value="17">SAN JUAN</option>
+													<option value="18">SAN LUIS</option>
+													<option value="19">SANTA CRUZ</option>
+													<option value="20">SANTA FE</option>
+													<option value="21">SANTIAGO</option>
+													<option value="22">TIERRA DEL FUEGO</option>
+													<option value="23">TUCUMAN</option>
+													<option value="24">CABA</option>
+												</select>
+											</div>
+										</div>
+								</div>
+
+								<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label>Transporte: </label>
+												<input type="text" name="transporte_envios" class="form-control" placeholder="Transporte principal y dirección de este">
+											</div>
+										</div>
+
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label>Ubicacion de google: </label>
+												<input type="text" name="envios_en_google" class="form-control" placeholder="Ubicación de google maps">
+											</div>
+										</div>
+
+								</div>
+
+								<div class="row">
+										<div class="col-lg-6">
+		                                	<div class="form-group">
+												<label>Observaciones:</label>
+		                                    	<textarea name="envios_observaciones" rows="4" cols="4" placeholder="Aclaraciones para envíos" class="form-control"></textarea>
+		                                	</div>
+										</div>
+
+										<div class="col-lg-6">
+		                                	<div class="form-group">
+												<label>Notas:</label>
+		                                    	<textarea name="envios_notas" rows="4" cols="4" placeholder="Notas sobre el deposito del cliente" class="form-control"></textarea>
+		                                	</div>
+										</div>
+								</div>
+							</fieldset>
+
+							<h6><b>Termoformada</br>1.25 mm</b></h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Historial del cliente:</label>
+		                                    <textarea name="additional-info" rows="5" cols="5" placeholder="Historial con el cliente. Fecha de cumpleaños, encargados, etc." class="form-control"></textarea>
+	                                    </div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Cliente desde: </label>
+											<input type="text" name="creado" class="form-control" placeholder="Desde hoy">
+										</div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Ultima compra: </label>
+											<input type="text" name="modificado" class="form-control" placeholder="Ultima compra">
+										</div>
+									</div>
+
+
+
+
+
+								</div>
+							</fieldset>
+							
+
+														
+							<h6><b>Termoformada</br>2.00 mm</b></h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Historial del cliente:</label>
+		                                    <textarea name="additional-info" rows="5" cols="5" placeholder="Historial con el cliente. Fecha de cumpleaños, encargados, etc." class="form-control"></textarea>
+	                                    </div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Cliente desde: </label>
+											<input type="text" name="creado" class="form-control" placeholder="Desde hoy">
+										</div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Ultima compra: </label>
+											<input type="text" name="modificado" class="form-control" placeholder="Ultima compra">
+										</div>
+									</div>
+
+
+
+
+
+								</div>
+							</fieldset>
+
+							
+							<h6><b>Disco laminado</br>1 cara</b></h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Historial del cliente:</label>
+		                                    <textarea name="additional-info" rows="5" cols="5" placeholder="Historial con el cliente. Fecha de cumpleaños, encargados, etc." class="form-control"></textarea>
+	                                    </div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Cliente desde: </label>
+											<input type="text" name="creado" class="form-control" placeholder="Desde hoy">
+										</div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Ultima compra: </label>
+											<input type="text" name="modificado" class="form-control" placeholder="Ultima compra">
+										</div>
+									</div>
+
+
+
+
+
+								</div>
+							</fieldset>
+							
+							
+							<h6><b>Disco laminado</br>2 caras</b></h6>
+							<fieldset>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Historial del cliente:</label>
+		                                    <textarea name="additional-info" rows="5" cols="5" placeholder="Historial con el cliente. Fecha de cumpleaños, encargados, etc." class="form-control"></textarea>
+	                                    </div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Cliente desde: </label>
+											<input type="text" name="creado" class="form-control" placeholder="Desde hoy">
+										</div>
+									</div>
+
+									<div class="col-lg-3">
+										<div class="form-group">
+											<label>Ultima compra: </label>
+											<input type="text" name="modificado" class="form-control" placeholder="Ultima compra">
+										</div>
+									</div>
+
+
+
+
+
+								</div>
+							</fieldset>							
+
+						</form>
+		            </div>
+		            <!-- /wizard with validation GESTORE --
+				</div>
+				<!-- /content area -->
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////FOOTER: INICIO/////////////////////////////////////////////-->
+				<!-- Footer -->
+
+				<!-- /footer -->
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////FOOTER: FIN////////////////////////////////////////////////-->
+
+
+			</div>
+			<!-- /inner content -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+</body>
+</html>
