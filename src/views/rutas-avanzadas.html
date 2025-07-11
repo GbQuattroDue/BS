@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rutas Avanzadas - Gestore</title>
+    
+    <!-- Estilos del template -->
+    <link href="/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar navbar-expand-lg navbar-dark navbar-static">
+        <div class="navbar-brand ml-2 ml-lg-0">
+            <a href="/dashboard" class="d-inline-block">
+                <img src="/global_assets/images/logo_light.png" alt="Gestore">
+            </a>
+        </div>
+        <div class="d-flex justify-content-end align-items-center ml-auto">
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item">
+                    <a href="/dashboard" class="navbar-nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/login" class="navbar-nav-link">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="page-content">
+        <div class="content-wrapper">
+            <div class="content-inner">
+                <div class="content">
+                    <div class="container">
+                        <h2><i class="icon-code mr-2"></i>Ejemplos de Rutas Avanzadas</h2>
+                        
+                        <!-- 1. Rutas con Parámetros -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h4><i class="icon-link mr-2"></i>1. Rutas con Parámetros</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Estas rutas capturan valores dinámicos de la URL:</p>
+                                <div class="btn-group mb-2" role="group">
+                                    <button class="btn btn-info" onclick="probarRuta('/usuario/123')">Ver Usuario 123</button>
+                                    <button class="btn btn-info" onclick="probarRuta('/usuario/456')">Ver Usuario 456</button>
+                                    <button class="btn btn-info" onclick="probarRuta('/pedido/789/cliente/123')">Pedido 789 de Cliente 123</button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-info" onclick="probarRuta('/productos?categoria=electrónicos&precio_min=100')">
+                                        Productos con Filtros
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Rutas Protegidas -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h4><i class="icon-lock mr-2"></i>2. Rutas Protegidas (Requieren Login)</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="alert alert-warning">
+                                    <i class="icon-warning mr-2"></i>
+                                    Estas rutas requieren un token JWT válido. Debes estar logueado.
+                                </p>
+                                <div class="btn-group mb-2" role="group">
+                                    <button class="btn btn-warning" onclick="probarRutaProtegida('/dashboard-seguro')">Dashboard Seguro</button>
+                                    <button class="btn btn-warning" onclick="probarRutaProtegida('/mi-perfil')">Mi Perfil</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Crear Datos -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h4><i class="icon-plus mr-2"></i>3. Crear Datos (POST)</h4>
+                            </div>
+                            <div class="card-body">
+                                <form id="crearProductoForm">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" placeholder="Nombre del producto" name="nombre" required>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control" placeholder="Precio" name="precio" step="0.01" required>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <select class="form-control" name="categoria" required>
+                                                <option value="">Seleccionar categoría</option>
+                                                <option value="electrónicos">Electrónicos</option>
+                                                <option value="ropa">Ropa</option>
+                                                <option value="hogar">Hogar</option>
+                                                <option value="deportes">Deportes</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-success">Crear Producto</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- 4. Rutas de Administración -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h4><i class="icon-user-tie mr-2"></i>4. Rutas de Administración</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="alert alert-danger">
+                                    <i class="icon-warning mr-2"></i>
+                                    Solo usuarios administradores pueden acceder a estas rutas.
+                                </p>
+                                <div class="btn-group mb-2" role="group">
+                                    <button class="btn btn-danger" onclick="probarRutaProtegida('/admin/usuarios')">Ver Todos los Usuarios</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resultado -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4><i class="icon-display mr-2"></i>Resultado de la Prueba</h4>
+                            </div>
+                            <div class="card-body">
+                                <pre id="resultado" class="bg-light p-3">Selecciona una ruta para probar...</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/global_assets/js/main/jquery.min.js"></script>
+    <script src="/global_assets/js/main/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    
+    <script>
+        // Función para probar rutas públicas
+        async function probarRuta(url) {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('resultado').textContent = 'Error: ' + error.message;
+            }
+        }
+
+        // Función para probar rutas protegidas
+        async function probarRutaProtegida(url) {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    document.getElementById('resultado').textContent = 'Error: No hay token. Debes hacer login primero.';
+                    return;
+                }
+
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const data = await response.json();
+                document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('resultado').textContent = 'Error: ' + error.message;
+            }
+        }
+
+        // Manejar formulario de crear producto
+        document.getElementById('crearProductoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const datos = {
+                nombre: formData.get('nombre'),
+                precio: formData.get('precio'),
+                categoria: formData.get('categoria')
+            };
+
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    document.getElementById('resultado').textContent = 'Error: No hay token. Debes hacer login primero.';
+                    return;
+                }
+
+                const response = await fetch('/crear-producto', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(datos)
+                });
+
+                const data = await response.json();
+                document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
+                
+                if (response.ok) {
+                    this.reset(); // Limpiar formulario si fue exitoso
+                }
+            } catch (error) {
+                document.getElementById('resultado').textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gestore App - Login</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+        type="text/css">
+    <link href="/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script src="/global_assets/js/main/jquery.min.js"></script>
+    <script src="/global_assets/js/main/bootstrap.bundle.min.js"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script src="/assets/js/app.js"></script>
+    <!-- /theme JS files -->
+
+</head>
+
+<body>
+
+    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <!-- Main navbar -->
+    <div class="navbar navbar-expand-lg navbar-dark navbar-static">
+        <div class="navbar-brand ml-2 ml-lg-0">
+            <a href="/dashboard" class="d-inline-block">
+                <img src="/global_assets/images/logo_light.png" alt="Gestore">
+            </a>
+        </div>
+        <div class="d-flex justify-content-end align-items-center ml-auto">
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item">
+                    <a href="/registro" class="navbar-nav-link">
+                        <i class="icon-user-plus"></i>
+                        <span class="d-none d-lg-inline-block ml-2">Registrarse</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/perfil" class="navbar-nav-link">
+                        <i class="icon-user"></i>
+                        <span class="d-none d-lg-inline-block ml-2">Perfil</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/rutas-avanzadas" class="navbar-nav-link">
+                        <i class="icon-code"></i>
+                        <span class="d-none d-lg-inline-block ml-2">Rutas Avanzadas</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Inner content -->
+            <div class="content-inner">
+
+                <!-- Content area -->
+                <div class="content d-flex justify-content-center align-items-center">
+
+                    <!-- Login form -->
+                    <form class="login-form" id="loginForm" method="POST" action="/api/auth/login">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <img src="/global_assets/images/placeholders/AIperfil.png"
+                                        class="border-secondary border-3 rounded-pill mb-3 mt-1" alt="Perfil">
+                                    <h5 class="mb-0">Bienvenido a Gestore</h5>
+                                    <span class="d-block text-muted">Inicia sesión para gestionar tus pedidos</span>
+                                </div>
+
+                                <div class="form-group form-group-feedback form-group-feedback-left">
+                                    <input type="email" name="email" class="form-control" placeholder="Tu email"
+                                        required>
+                                    <div class="form-control-feedback">
+                                        <i class="icon-envelop3 text-muted"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-group-feedback form-group-feedback-left">
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Tu contraseña" required>
+                                    <div class="form-control-feedback">
+                                        <i class="icon-lock2 text-muted"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                                </div>
+
+                                <div class="text-center">
+                                    <a href="/recuperar-password">¿Olvidaste tu contraseña?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /login form -->
+
+                </div>
+                <!-- /content area -->
+
+            </div>
+            <!-- /inner content -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+    <!-- Script para manejar el login -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const email = formData.get('email');
+            const password = formData.get('password');
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // Guardar token en localStorage
+                    localStorage.setItem('token', data.token);
+                    // Redirigir al dashboard
+                    window.location.href = '/dashboard';
+                } else {
+                    const error = await response.json();
+                    alert('Error: ' + (error.message || 'Credenciales inválidas'));
+                }
+            } catch (error) {
+                alert('Error de conexión: ' + error.message);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
